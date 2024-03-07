@@ -1,0 +1,33 @@
+package com.fastcampus.programming.fastDmaker.entity;
+
+import com.fastcampus.programming.fastDmaker.type.DeveloperLevel;
+import com.fastcampus.programming.fastDmaker.type.DeveloperSkillType;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
+@Builder // 아래 두 애너테이션은 @Builder의 짝꿍이라고 봄!
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity // entity로 쓰기 위해
+@EntityListeners(AuditingEntityListener.class)
+public class RetiredDeveloper {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected  Long id;
+
+    private String memberId;
+    private String name;
+
+    @CreatedDate
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
+}
